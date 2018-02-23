@@ -1,0 +1,27 @@
+<!--pages/orderShipping/orderShipping.wxml-->
+<view>
+    用户填写地址信息
+
+    <form bindsubmit="deleteInfo">
+      您的名字：
+      <input name="username"></input>
+      联系电话：
+      <input name="phone"></input>
+      地址：
+      <input name="address"></input>
+      <button form-type='submit'>提交</button>
+      tip:
+        <text>如需发票，请到店取餐时接洽服务员</text>
+        <button bindtap='changeInfo'>修改地址信息</button>
+        <button bindtap='deleteInfo'>删除</button>
+    </form>
+
+    <button bindtap="getUserOrderShipping">获取数据</button>
+    
+</view>
+
+<view wx:for="{{getInfo}}" wx:key=''>
+  姓名：<text>{{item.receiver_name}}</text>
+  联系电话：<text>{{item.receiver_phone}}</text>
+  地址：<text>{{item.receiver_address}}</text>
+</view>

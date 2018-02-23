@@ -1,0 +1,5 @@
+<!--pages/cart/cart.wxml-->
+<view class='cart'>
+  <text>20.33</text>
+  <text class='goToOrder'>选好了</text>
+</view>

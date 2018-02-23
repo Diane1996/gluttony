@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/me/me",
+    "pages/index/index",
+    "pages/food/food",
+    "pages/address/address",
+    "pages/orderList/orderList",
+    "pages/question/question",
+    "pages/order/order",
+    "pages/orderShipping/orderShipping",
+    "pages/cart/cart",
+    "pages/logs/logs",
+    "pages/restaurant/restaurant"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "一响贪食",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "img/icon_normal.png",
+        "selectedIconPath": "img/icon_pressed.png",
+        "text": "食物"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "iconPath": "img/footer-icon-03.png",
+        "selectedIconPath": "img/footer-icon-03-active.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "iconPath": "img/footer-icon-04.png",
+        "selectedIconPath": "img/footer-icon-04-active.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

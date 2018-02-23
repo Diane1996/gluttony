@@ -1,0 +1,19 @@
+<!--pages/food/food.wxml-->
+
+
+ <scroll-view wx:for="{{foodInfo}}" class='food' wx:key="">
+  <view class='food_item'>
+      <text class='name'>{{item.food_name}}</text>
+      <!-- <text class='picture'>{{item.food_picture}}</text> -->
+      <text class='price'>{{item.food_price}}</text>
+      <text class='sales'>{{item.food_sales}}</text>
+      <image src='http://img1.3lian.com/2015/w7/85/d/101.jpg' class='picture'></image>
+      <button class='minus'>—</button>
+      <button class='add' bindtap='addCart'>＋</button>
+  </view>
+</scroll-view> 
+
+<view class="cart {{_hide === false ? 'hide' : ''}}">
+  <text>20.33</text>
+  <text class='goToOrder' bindtap='goToOrder'>选好了</text>
+</view>

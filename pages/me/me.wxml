@@ -1,0 +1,11 @@
+<!-- <view class='container'> -->
+  <view class='banner'>
+    <image src='{{headImg}}' class='headImg'></image>
+    <text class='username'>{{username}}</text>
+    <text class="about" bindtap='gotoRestaurant'>关于我们</text>
+  </view>
+  <view wx:for="{{list}}" wx:key='' class='listItem'>
+    <image src='{{item.src}}' class='icon'></image>
+    <text>{{item.text}}</text>
+  </view>
+<!-- </view> -->

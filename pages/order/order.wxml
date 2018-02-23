@@ -1,0 +1,45 @@
+<!--pages/order/order.wxml-->
+<!-- <view class="orderPage"> -->
+
+<view class='orderList'>
+  <text class='food'>餐品</text>
+  <view class='foodList'>
+    <view wx:for="{{orderList.food_data}}" wx:key="" class='listItem'>
+      <text>{{item.food_name}}</text>
+      <text>{{item.food_picture}}</text>
+      <text>{{item.food_price}}</text>
+      <!-- <text>{{item.food_name}}</text> -->
+    </view>
+  </view>
+</view>
+
+
+  <view class='eatingType'>
+    <text class="type">就餐方式</text>
+    <view class="btn">
+      <button class="tangshi {{type === '0' ? 'curBtn' : ''}}" data-num="0" bindtap='changeType'>堂食</button>
+    <button class="waidai {{type === '1' ? 'curBtn' : ''}}" data-num="1" bindtap='changeType'>外带</button>
+    <button class="waimai {{type === '2' ? 'curBtn' : ''}}" data-num="2" bindtap='changeType'>外卖</button>
+    </view>
+  </view>
+
+  <view class='requirement'>
+    <text class='requir'>点餐要求</text>
+    <textarea class='text' placeholder="附加要求..." placeholder-class="placeholder" auto-focus="true" value="{{textarea}}" ></textarea>
+    <view class='spicy'>
+     <button class="spicyBtn" bindtap='addToTextarea' data-spicy='多辣'>多辣</button>
+     <button class="spicyBtn" bindtap='addToTextarea' data-spicy='一般'>一般</button>
+     <button class="spicyBtn" bindtap='addToTextarea' data-spicy='少辣'>少辣</button>
+     <button class="spicyBtn" bindtap='addToTextarea' data-spicy='不辣'>不辣</button>
+    </view>
+  </view>
+
+<view class="fa fa-flag"></view>
+
+  <view class="total">
+    <text class="totalPrice">总价：{{orderList.total}}</text>
+    <text class="payment" bindtap='createOrder'>去付款</text>
+  </view>
+
+
+<!-- </view> -->
