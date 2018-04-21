@@ -9,7 +9,25 @@ Page({
 
   data: {
     _hide: false,
-    categoryData: ''
+    categoryData: '',
+    selectedItem: 0,
+    category: [
+        '分类1', '分类2', '分类3', '分类4', '分类5', '分类6',
+    ],
+    foodInfo: [
+        {
+            name: '名字',
+            price: '12.7',
+            sales: 123
+        }
+    ]
+  },
+
+  selectedCategory: function (e) {
+    var index = e.currentTarget.dataset.index;
+    this.setData({
+        selectedItem: index
+    })
   },
 
   addCart: function (e) {
@@ -37,25 +55,25 @@ Page({
    */
   onReady: function () {
     var _this = this;
-    wx.request({
-      url: api.foodFindAll,
-      success: function (res) {
-        _this.setData({
-          foodInfo: res.data.data.result
-        })
-        console.log(res.data.data.result);
-      }
-    })
-    // var _this = this;
-    wx.request({
-      url: api.categoryFindAll,
-      success: function (res) {
-        _this.setData({
-          categoryData: res.data.data.result
-        })
-        console.log(res.data.data.result);
-      }
-    })
+    // wx.request({
+    //   url: api.foodFindAll,
+    //   success: function (res) {
+    //     _this.setData({
+    //       foodInfo: res.data.data.result
+    //     })
+    //     console.log(res.data.data.result);
+    //   }
+    // })
+    // // var _this = this;
+    // wx.request({
+    //   url: api.categoryFindAll,
+    //   success: function (res) {
+    //     _this.setData({
+    //       categoryData: res.data.data.result
+    //     })
+    //     console.log(res.data.data.result);
+    //   }
+    // })
   },
 
   /**
