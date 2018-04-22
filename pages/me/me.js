@@ -23,7 +23,12 @@ Page({
         src: '../../img/iconfont-help.png',
         text: '常见问题',
         url: ''
-     }
+      },
+      {
+        src: '../../img/iconfont-help.png',
+        text: '关于我们',
+        url: ''
+      }
     ],
   },
 

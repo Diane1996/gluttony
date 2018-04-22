@@ -1,26 +1,44 @@
-.banner{
-  height: 100px;
+.banner {
   width: 100%;
-  line-height: 100px;
-  background-color: red;
+  background-color: #fff;
+  border-bottom: 1px solid #f6f6f6;
+  margin: 20rpx 0;
 }
-.headImg{
-  width: 60px;
-  height: 60px;
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.headImg {
+  width: 180rpx;
+  height: 180rpx;
   border-radius: 50%;
-  margin: 20px 10px 0 20px;
-  float:left;
+  margin: 40rpx;
 }
-.about{
+
+.username{
+  margin-bottom: 20rpx;
+}
+
+.about {
   float: right;
   margin-right: 20px;
 }
 
-.listItem{
-  height: 40px;
-  line-height: 40px;
+.listItem {
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 40rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f6f6f6;
+  background: #fff;
 }
-.icon{
-  width: 30px;
-  height: 30px;
+
+.icon {
+  width: 30rpx;
+  height: 30rpx;
+  padding-right: 20rpx;
 }
