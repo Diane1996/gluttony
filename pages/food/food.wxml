@@ -1,14 +1,15 @@
 <!--pages/food/food.wxml-->
 <view class='page'>
     <scroll-view class='category-view'>
-        <view wx:for="{{category}}" wx:key="*this" class='category-item {{selectedItem === index ? "selected-category-item" : ""}}' data-index="{{index}}" bindtap='selectedCategory'>
-            <text>{{item}}</text>
+        <view wx:for="{{menu}}" wx:key="*this" class='category-item {{selectedItem === index ? "selected-category-item" : ""}}' data-index="{{index}}" bindtap='selectedCategory'>
+            <text>{{item.name}}</text>
         </view>
     </scroll-view>
-    <scroll-view wx:for="{{foodInfo}}" class='food-view' wx:key="*this">
-        <view class='food_item'>
+    <scroll-view class='food-view'>
+        <view class='food_item'wx:for="{{menu[0].list}}" wx:key="*this">
             <view>
-                <image src='http://img1.3lian.com/2015/w7/85/d/101.jpg' class='picture'></image>
+                <!-- <image src='http://img1.3lian.com/2015/w7/85/d/101.jpg' class='picture'></image> -->
+                <image src='{{item.url}}' class='picture'></image>
             </view>
             <view>
                 <view>

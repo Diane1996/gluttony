@@ -1,5 +1,5 @@
 const api = require('./../../api.js');
-
+var menu = require('./../../img/eatingIMG/menu.js');
 // pages/food/food.js
 Page({
 
@@ -47,7 +47,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+        this.setData({
+            menu: menu.menu
+        })
   },
 
   /**
