@@ -27,7 +27,7 @@
                 "text": "食物"
             },
             {
-                "pagePath": "pages/logs/logs",
+                "pagePath": "pages/orderList/orderList",
                 "iconPath": "img/footer-icon-03.png",
                 "selectedIconPath": "img/footer-icon-03-active.png",
                 "text": "订单"

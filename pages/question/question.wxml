@@ -1,2 +1,22 @@
 <!--pages/question/question.wxml-->
-<text>pages/question/question.wxml</text>
+<view class='page'>
+    <view class="question">银行/支付宝/财付通已扣款，订单仍显示未付款</view>
+    <view class="answer">出现此问题，可能是银行/支付宝/财付通的数据没有即时传输至订单，请您不要担心，稍后刷新页面查看。</view>
+    <view class="answer">如半小时后仍显示"未付款"，请先联系银行/支付宝/财付通客服，获取您扣款的交易号，然后致电客服10107888，我们会协助您解决。</view>
+    <view class="question">未消费如何退款？</view>
+    <view class="answer">请您登录账户，进入"我的订单"，找到您想要退款的订单，点击"申请退款"，根据页面提示选择退回余额或原支付方账户，即可操作退款。</view>
+    <view class="answer">如无"退款"字样，表示订单当前无法自助退款，有以下二种原因：</view>
+    <view class="answer">订单中券已被商家验证；</view>
+    <view class="answer">订单为邮寄商品单，邮寄商品单不支持退款，您可点击"申请售后服务"，申请退换货。</view>
+    <view class="question">未收到退款怎么办？</view>
+    <view class="answer">不同退款方式，退款到账时间不同，请您确认您当时选择的退款方式。</view>
+    <view class="answer">退至余额，1个工作日（少量商品需要3个工作日）到账，您可在"我的余额"查询。</view>
+    <view class="answer">原路退（即退至您当时支付使用的银行卡/支付宝/财付通），1-7个工作日（少量商品需额外增加3个工作日）到账。</view>
+    <view class="answer">银行卡查询退款，请您登录网上银行或致电银行客服查询。</view>
+    <view class="answer">支付宝查询退款，请您登录支付宝，进入"最近交易记录-退款记录"查询。</view>
+    <view class="answer">财付通查询退款，请您登录财付通，进入"交易查询-收支明细"查询。</view>
+    <view class="answer">温馨提示：</view>
+    <view class="answer">退至余额或原路退，目前暂无到账通知短信，请您谅解。</view>
+    <view class="answer">如您同一订单支付时选择了多种支付方式（或先充值至余额），退款也会相应分为多笔，退至您当时支付使用的银行卡/支付宝/财付通。</view>
+    <view class="answer">如需查看退款详情，请您登录账户，进入"我的订单"，找到您退款的订单，点击"退款详情"，可查看详细退款信息。</view>
+</view>
