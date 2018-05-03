@@ -8,28 +8,6 @@ Page({
   data: {
     username: '',
     headImg: '',
-    list: [
-      {
-        src: '../../img/iconfont-shouhuodizhi.png',
-        text: '地址管理',
-        url: ''
-      },
-      {
-        src: '../../img/iconfont-dingdan.png',
-        text: '订单管理',
-        url: ''
-      },
-      {
-        src: '../../img/iconfont-help.png',
-        text: '常见问题',
-        url: ''
-      },
-      {
-        src: '../../img/iconfont-help.png',
-        text: '关于我们',
-        url: ''
-      }
-    ],
   },
 
   gotoRestaurant: function () {

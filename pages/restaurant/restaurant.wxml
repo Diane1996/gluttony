@@ -1,2 +1,20 @@
-<!--pages/restaurant/restaurant.wxml-->
-<text>pages/restaurant/restaurant.wxml</text>
+<view class='page'>
+  <view class='infoItem' style='height: {{windowHeight}}px'>
+    <view class='name-text'>{{infoData.name}}</view>
+    <view class='phone-text'>
+      <text>{{infoData.phone}}</text>
+    </view>
+    <view class='phone-text'>
+      <text>{{infoData.address}}</text>
+    </view>
+    <view>
+      <view class='detail-title'>详细</view>
+      <view class='detail-text'>
+        <text>
+      {{infoData.detail}}
+      </text>
+      </view>
+    </view>
+  </view>
+
+</view>

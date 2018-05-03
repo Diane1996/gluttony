@@ -29,12 +29,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "餐厅",
-					"pathName": "pages/restaurant/restaurant"
+					"pathName": "pages/restaurant/restaurant",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "菜单",
+					"pathName": "pages/food/food",
+					"query": ""
 				}
 			]
 		}

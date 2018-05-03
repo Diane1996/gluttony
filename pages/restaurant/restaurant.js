@@ -4,14 +4,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    infoData: {
+      name: '一晌贪食',
+      phone: '13912341234',
+      address: '成都天府大道',
+      detail: '必胜客是比萨专卖连锁企业之一，由法兰克·卡尼和丹·卡尼两兄弟在1958年，凭着由母亲借来的600美元于美国堪萨斯州威奇托创立首间必胜客餐厅。它的标识特点是把屋顶作为餐厅外观显著标志。必胜客属于百胜餐饮集团'
+    },
+    windowHeight: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var page = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        page.setData({
+          windowHeight: res.windowHeight
+        })
+      }
+    })
   },
 
   /**

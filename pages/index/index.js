@@ -19,7 +19,6 @@ Page({
     })
   },
   gotoFood: function() {
-    console.log(api.restaurant);
     wx.navigateTo({
       url: '../food/food',
     })

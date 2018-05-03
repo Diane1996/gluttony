@@ -4,7 +4,7 @@
 <view class='orderList'>
   <text class='food'>餐品</text>
   <view class='foodList'>
-    <view wx:for="{{orderList.food_data}}" wx:key="" class='listItem'>
+    <view wx:for="{{orderList.food_data}}" wx:key="*this" class='listItem'>
       <text>{{item.food_name}}</text>
       <text>{{item.food_picture}}</text>
       <text>{{item.food_price}}</text>
