@@ -1,63 +1,153 @@
 /* pages/order/order.wxss */
+
 /* .orderPage{
   background-color: #f0f0f0; 
 } */
 
 /*餐品  */
-.orderList{
+
+.orderList {
   position: relative;
+  background: #fff;
 }
-.food{
-  font-size: 12px;
-  margin:10px 0 10px 10px;
+
+.title-comm {
+  font-size: 36rpx;
+  padding: 25rpx;
+  color: #666;
+  border-bottom: 2rpx solid #f1f1f1;
 }
-.foodList{
+
+.image-comm {
+  height: 80rpx;
+  width: 80rpx;
+  margin: 0 25rpx 0 40rpx;
+}
+
+.name-comm {
+  width: 300rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 32rpx;
+}
+
+.price-comm {
+  font-size: 26rpx;
+}
+
+.count-comm {
+  margin: 0 40rpx;
+}
+
+.foodList {
   /* margin-top: 30px; */
-
-}
-.listItem{
-  height:50px;
-  line-height:50px;
-  border-top:1px solid #f0f0f0;
 }
 
+.listItem {
+  height: 50px;
+  /* line-height: 50px; *//* border-top: 1px solid #f0f0f0; */
+}
 
-.eatingType{
-  height: 85px;
+.flex-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*就餐方式  */
+
+.eatingType {
+  /* height: 85px; */
   position: relative;
   border-top: 5px solid #f0f0f0;
   border-bottom: 5px solid #f0f0f0;
+  background: #fff;
 }
-.type{
+
+.eatingContent {
+  margin: 20rpx;
+}
+
+.type {
   font-size: 12px;
-   position: absolute;
-   top: 10px;
-   left: 10px; 
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
-.btn{
-  width: 300px;
-  margin: 30px auto;
-  /* position: absolute; */
-  top: 30px;
+
+.type-comm {
+  width: 200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 25px;
+  background: #f1f1f1;
+  color: #777;
 }
-button{
+
+button {
   width: 100px;
   float: left;
 }
-.curBtn{
-  border: 1px solid #000;
+
+.curBtn {
+  background: #ea5036;
+  color: #fff;
 }
 
+/*选择桌号  */
+
+.tangshiType {
+  background: #fff;
+  margin-bottom: 10rpx;
+}
+
+.inputType {
+  padding: 40rpx;
+}
+
+.inputStyle {
+  border: 2rpx solid #f1f1f1;
+  font-size: 30rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-left: 20rpx;
+}
+
+/*选择地址  */
+
+.waimaiType {
+  background: #fff;
+  margin-bottom: 10rpx;
+}
+
+.arrow-icon{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.addressType {
+  font-size: 26rpx;
+  color: #333;
+  padding: 20rpx 40rpx;
+}
+.address-item{
+  margin-top: 10rpx;
+}
 /*点餐要求  */
-.requirement{
-  height:129px;
-  border-bottom:5px solid #f0f0f0;
 
+.requirement {
+  height: 129px;
+  border-bottom: 5px solid #f0f0f0;
+  background: #fff;
 }
-.requir{
+
+.requir {
   font-size: 12px;
 }
-.text{
+
+.text {
   height: 50px;
   width: 75%;
   line-height: 15px;
@@ -65,21 +155,24 @@ button{
   margin: 10px auto;
   overflow-y: hidden;
 }
-.placeholder{
+
+.placeholder {
   font-size: 12px;
 }
-.spicy{
+
+.spicy {
   width: 300px;
   margin: 0px auto;
 }
-.spicyBtn{
+
+.spicyBtn {
   height: 20px;
   line-height: 20px;
   font-size: 14px;
   width: 60px;
 }
 
-.total{
+.total {
   width: 100%;
   height: 60px;
   line-height: 60px;
@@ -90,16 +183,18 @@ button{
   color: #fff;
   text-align: center;
 }
-.totalPrice{
+
+.totalPrice {
   width: 65%;
-   position: absolute;
+  position: absolute;
   top: 0;
-  left: 0; 
+  left: 0;
 }
-.payment{
+
+.payment {
   position: absolute;
   top: 0;
   right: 0;
   width: 35%;
-  border-left: #fff solid 2px;  
+  border-left: #fff solid 2px;
 }

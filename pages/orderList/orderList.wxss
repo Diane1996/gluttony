@@ -1,1 +1,31 @@
 /* pages/orderList/orderList.wxss */
+
+.item {
+    height: 200rpx;
+    background: #fff;
+    border-bottom: 2rpx solid #f1f1f1;
+}
+
+.flex-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.image-icon {
+    height: 150rpx;
+    width: 150rpx;
+    margin: 0 25rpx 0 40rpx;
+}
+
+.text-comm {
+    font-size: 28rpx;
+    color: #666;
+    margin-top: 10rpx; 
+}
+
+.arrow-icon{
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 25rpx;
+}

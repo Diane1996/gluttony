@@ -29,18 +29,30 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
-					"name": "餐厅",
-					"pathName": "pages/restaurant/restaurant",
+					"name": "菜单界面",
+					"pathName": "pages/food/food",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "菜单",
-					"pathName": "pages/food/food",
+					"name": "订单",
+					"pathName": "pages/orderList/orderList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "常见问题",
+					"pathName": "pages/question/question",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "结算页面",
+					"pathName": "pages/order/order",
 					"query": ""
 				}
 			]

@@ -9,8 +9,18 @@ Page({
    */
   data: {
     type: -1,
-    orderList: 0,
+    orderList: [{
+      url: '../../img/eatingIMG/noodles/seaweedNoodles.png',
+      name: '海苔蔬菜乌冬面',
+      price: 18,
+      count: 1
+    }],
     textarea: '',
+    address: {
+      name: '张三',
+      phone: '13912341234',
+      address: '成都天府大道1314号'
+    }
   },
 
   createOrder: function () {

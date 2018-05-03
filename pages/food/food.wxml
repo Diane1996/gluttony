@@ -1,28 +1,29 @@
 <!--pages/food/food.wxml-->
 <view class='page'>
+
   <scroll-view class='category-view'>
-    <view wx:for="{{category}}" wx:key="*this" class='category-item {{selectedItem === index ? "selected-category-item" : ""}}' data-index="{{index}}" bindtap='selectedCategory'>
-      <text>{{item}}</text>
+    <view wx:for="{{menu}}" wx:key="*this" class='category-item {{selectedItem === index ? "selected-category-item" : ""}}' data-index="{{index}}" bindtap='selectedCategory'>
+      <text>{{item.name}}</text>
     </view>
   </scroll-view>
-  <scroll-view class='food-view'>
-    <view class='food_item' wx:for="{{foodInfo}}" wx:key="*this">
-      <view class='flex-item'>
+  <scroll-view class='food-view' scroll-y>
+    <view class='food_item' wx:for="{{menu[selectedItem].list}}" wx:key="*this">
+      <view class='food_item'>
         <view>
-          <image src='http://img1.3lian.com/2015/w7/85/d/101.jpg' class='picture'></image>
+          <!-- <image src='http://img1.3lian.com/2015/w7/85/d/101.jpg' class='picture'></image> -->
+          <image src='{{item.url}}' class='picture'></image>
         </view>
         <view>
           <view class='name'>{{item.name}}</view>
-          <view class='price'>价格：{{item.price}}</view>
-          <view class='sales'>销量：{{item.sales}}</view>
+          <view class='price'>￥{{item.price}}</view>
         </view>
       </view>
       <view>
         <button class='add' bindtap='addCart' data-item="{{item}}">＋</button>
       </view>
+
     </view>
   </scroll-view>
-
   <!--购物车列表  -->
   <view class='black-mask' bindtap='cancelCartList' wx:if="{{showCartList}}"></view>
   <view class='cart-list' wx:if="{{showCartList}}">
@@ -32,10 +33,10 @@
         <view class='flex-item'>
           <!-- <image src='{{item.picture}}'></image> -->
           <view>
-            <image src='http://img1.3lian.com/2015/w7/85/d/101.jpg' class='picture-icon'></image>
+            <image src='{{item.url}}' class='picture-icon'></image>
           </view>
           <view>
-            <view>{{item.name}}</view>
+            <view class='name'>{{item.name}}</view>
             <view class='price-text'>￥{{item.price}}</view>
           </view>
 
@@ -46,9 +47,8 @@
   </view>
 
   <view class="cart" wx:if="{{showCart}}">
-    <view></view>
     <view class='cart-main'>
-      <text class='prise-text'>20.33</text>
+      <text class='prise-text' bindtap='showCartList'>详情￥{{total}}</text>
       <text class='goToOrder' bindtap='goToOrder'>选好了</text>
     </view>
   </view>

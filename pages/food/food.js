@@ -1,6 +1,8 @@
 const api = require('./../../api.js');
-var cartList = [];  // 购物车列表
 
+var menu = require('./../../img/eatingIMG/menu.js');
+
+var cartList = [];  // 购物车列表
 // pages/food/food.js
 Page({
 
@@ -12,40 +14,15 @@ Page({
     showCart: true,
     categoryData: '',
     selectedItem: 0,
-    showCartList: true,
-    category: [
-      '分类1', '分类2', '分类3', '分类4', '分类5', '分类6',
-    ],
-    cartList: [
-      {
-        name: '名字名字名字名字名字',
-        price: '12.7',
-        count: 123
-      }, {
-        name: '名字名字名字名字名字',
-        price: '12.7',
-        count: 123
-      }, {
-        name: '名字名字名字名字名字',
-        price: '12.7',
-        count: 123
-      }, {
-        name: '名字名字名字名字名字',
-        price: '12.7',
-        count: 123
-      }, {
-        name: '名字名字名字名字名字',
-        price: '12.7',
-        count: 123
-      },
-    ],
-    foodInfo: [
-      {
-        name: '名字名字名字名字名字',
-        price: '12.7',
-        sales: 123
-      }
-    ]
+    showCartList: false,
+    cartList: [],
+    total: 0
+  },
+
+  showCartList: function () {
+    this.setData({
+      showCartList: true,
+    })
   },
 
   cancelCartList: function () {
@@ -64,15 +41,20 @@ Page({
 
   addCart: function (e) {
     var item = e.currentTarget.dataset.item;
+    var total = 0;
     for (var i = 0; i < cartList.length; i++) {
       if (cartList[i].name === item.name) 
       return;
     }
     cartList.push(item);
+    for (var i = 0; i < cartList.length; i++) {
+      total += item.price;
+    }
     this.setData({
       showCart: true,
-      cartList: cartList
-    })
+      cartList: cartList,
+      total: total
+    });
   },
 
   goToOrder: function (e) {
@@ -87,6 +69,9 @@ Page({
    */
   onLoad: function (options) {
 
+        this.setData({
+            menu: menu.menu
+        })
   },
 
   /**

@@ -2,6 +2,9 @@
 
 .page {
   display: flex;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .category-view {
@@ -23,7 +26,7 @@
 .food-view {
   width: 70%;
   background: #fff;
-  text-align: center;
+  height: 1050rpx;
 }
 
 .minus {
@@ -60,30 +63,25 @@
 }
 
 .food_item {
-  margin-top: 10px;
-  border-bottom: 1rpx solid #f6f6f6;
-  display: flex;
-  justify-content: space-between;
-}
-
-.flex-item {
-  display: flex;
-  justify-content: space-between;
+    /* margin-top: 10px; */
+    border-bottom: 1rpx solid #f6f6f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .name {
-  font-size: 40rpx;
+  font-size: 30rpx;
   width: 200rpx;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-left: 20rpx;
 }
 
 .price {
-  /* position: absolute;
-    right: 20px;
-    top: 40px; */
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 20rpx;
 }
 
 .sales {
@@ -95,6 +93,7 @@
 .picture {
   width: 80px;
   height: 80px;
+  margin-right: 20rpx;
 }
 
 /*隐藏侧边滚动条  */
