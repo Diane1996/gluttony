@@ -1,4 +1,57 @@
 <!--pages/orderDetail/orderDetail.wxml-->
 <view>
-    
+  <view class='waiting-text'>商家正在制作您的餐品，请耐心等候</view>
+  <scroll-view scroll-y class='scroll-view-H'>
+    <view class='orderList'>
+      <view class='title-comm'>餐品</view>
+      <view class='foodList'>
+        <view wx:for="{{cartList}}" wx:key="*this" class='listItem flex-item'>
+          <view class='flex-item'>
+            <view>
+              <image src='{{item.url}}' class='image-comm'></image>
+            </view>
+            <view>
+              <view class='name-comm'>{{item.name}}</view>
+              <view class='price-comm'>￥{{item.price}}</view>
+            </view>
+          </view>
+          <view class='count-comm'>
+            <text>x {{item.count}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='eatingType flex-item'>
+      <view class="title-comm">就餐方式</view>
+      <!-- <view>{{type}}</view> -->
+      <view class='text-comm'>堂食</view>
+    </view>
+
+    <!--选择桌号  -->
+    <view class='tangshiType flex-item' wx:if="{{type === 0 ? true : false}}">
+      <view class="title-comm">桌号</view>
+      <view class='text-comm'>10</view>
+    </view>
+
+    <!--选择地址  -->
+    <view class='waimaiType' wx:if="{{type === 2 ? true : false}}">
+      <view class="title-comm flex-item">
+        <view>送餐地址</view>
+      </view>
+      <view class='addressType'>
+        <view class='address-item'>联系人：{{address.name}}</view>
+        <view class='address-item'>联系电话：{{address.phone}}</view>
+        <view class='address-item'>详细地址：{{address.address}}</view>
+      </view>
+    </view>
+
+    <!--备注  -->
+    <view class='requirement'>
+      <view class='title-comm'>点餐要求</view>
+       <view class='mark-text'>
+        {{mark}}
+      </view> 
+    </view>
+  </scroll-view>
 </view>

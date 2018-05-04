@@ -60,6 +60,12 @@
 					"name": "选择地址页面",
 					"pathName": "pages/address/address",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "订单详情",
+					"pathName": "pages/orderDetail/orderDetail",
+					"query": ""
 				}
 			]
 		}

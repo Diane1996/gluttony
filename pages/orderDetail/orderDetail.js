@@ -5,14 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    type: 2,
+    address: {
+      name: '张三',
+      phone: '13912341234',
+      address: '成都天府大道1314号'
+    },
+    mark: '面里不要酱油'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.getStorage({
+      key: 'cartList',
+      success: (res) => {
+        var data = res.data;
+        var total = data.total;
+        var cartList = data.cartList;
+        this.setData({
+          cartList: cartList,
+          total: total
+        });
+      },
+    })
   },
 
   /**

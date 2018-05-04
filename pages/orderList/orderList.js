@@ -17,6 +17,12 @@ Page({
       ]
   },
 
+  gotoOrderDetail: function (e) {
+    var item = e.currentTarget.dataset.item;
+    wx.navigateTo({
+      url: '/pages/orderDetail/orderDetail?orderId=' + item.id,
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

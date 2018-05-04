@@ -1,19 +1,16 @@
 <!--pages/orderList/orderList.wxml-->
 <view class='page'>
-    <view class='item flex-item' wx:for="{{orderList}}" wx:key="*this">
+    <view class='item flex-item' wx:for="{{orderList}}" wx:key="*this" bindtap='gotoOrderDetail' data-item="{{item}}">
         <view class='flex-item'>
             <view>
                 <image src='../../img/eatingIMG/sushi/Sushi.png' class='image-icon'></image>
             </view>
-
             <view>
                 <view class='item-name'>{{item.type}}:{{item.list.length > 1 ? item.list[0].name + '等' + item.list.length + '件商品' : item.list[0].name}}</view>
                 <view class='text-comm'>下单时间：{{item.createdTime}}</view>
                 <view class='text-comm'>实付款：{{item.total}}元</view>
             </view>
-
         </view>
-
         <view>
             <image src='../../img/icon-arrowdown.png' class='arrow-icon'></image>
         </view>

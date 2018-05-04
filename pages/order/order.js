@@ -56,10 +56,10 @@ Page({
     //   }
     // })
 
-    wx.setStorage({
-        key: 'cartList',
-        data: ''
-    })
+    // wx.setStorage({
+    //     key: 'cartList',
+    //     data: ''
+    // })
 
     wx.redirectTo({
         url: '/pages/orderDetail/orderDetail',
