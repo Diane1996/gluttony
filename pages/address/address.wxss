@@ -1,1 +1,46 @@
 /* pages/address/address.wxss */
+
+.item {
+    height: 160rpx;
+    background: #fff;
+    border-bottom: 2rpx solid #f1f1f1;
+    color: #666;
+}
+
+.flex-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.address-item {
+    width: 80%;
+    padding-left: 40rpx;
+}
+
+.text-comm {
+    font-size: 36rpx;
+    margin-top: 10rpx;
+}
+
+.address-comm {
+    font-size: 32rpx;
+    margin-top: 10rpx;
+}
+
+.arrow-icon {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 25rpx;
+}
+
+.selected {
+    width: 20%;
+    text-align: center;
+}
+
+/*选中状态  */
+.selectedItem{
+    background: #666;
+    color: #fff;
+}

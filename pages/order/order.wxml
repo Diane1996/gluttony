@@ -1,74 +1,69 @@
 <!--pages/order/order.wxml-->
 <view class="page">
-  <view class='orderList'>
-    <view class='title-comm'>餐品</view>
-    <view class='foodList'>
-      <view wx:for="{{orderList}}" wx:key="*this" class='listItem flex-item'>
-        <view class='flex-item'>
-          <view>
-            <image src='{{item.url}}' class='image-comm'></image>
-          </view>
-          <view>
-            <view class='name-comm'>{{item.name}}</view>
-            <view class='price-comm'>￥{{item.price}}</view>
-          </view>
+    <scroll-view scroll-y class='scroll-view-H'>
+        <view class='orderList'>
+            <view class='title-comm'>餐品</view>
+            <view class='foodList'>
+                <view wx:for="{{cartList}}" wx:key="*this" class='listItem flex-item'>
+                    <view class='flex-item'>
+                        <view>
+                            <image src='{{item.url}}' class='image-comm'></image>
+                        </view>
+                        <view>
+                            <view class='name-comm'>{{item.name}}</view>
+                            <view class='price-comm'>￥{{item.price}}</view>
+                        </view>
+                    </view>
+                    <view class='count-comm'>
+                        <text>x {{item.count}}</text>
+                    </view>
+                </view>
+            </view>
         </view>
-        <view class='count-comm'>
-          <text>x {{item.count}}</text>
+
+        <view class='eatingType'>
+            <view class="title-comm">就餐方式</view>
+            <view class="eatingContent flex-item">
+                <view class="type-comm tangshi {{type === '0' ? 'curBtn' : ''}}" data-num="0" bindtap='changeType'>堂食</view>
+                <view class="type-comm waidai {{type === '1' ? 'curBtn' : ''}}" data-num="1" bindtap='changeType'>外带</view>
+                <view class="type-comm waimai {{type === '2' ? 'curBtn' : ''}}" data-num="2" bindtap='changeType'>外卖</view>
+            </view>
         </view>
-      </view>
-    </view>
-  </view>
-  <view class='eatingType'>
-    <view class="title-comm">就餐方式</view>
-    <view class="eatingContent flex-item">
-      <view class="type-comm tangshi {{type === '0' ? 'curBtn' : ''}}" data-num="0" bindtap='changeType'>堂食</view>
-      <view class="type-comm waidai {{type === '1' ? 'curBtn' : ''}}" data-num="1" bindtap='changeType'>外带</view>
-      <view class="type-comm waimai {{type === '2' ? 'curBtn' : ''}}" data-num="2" bindtap='changeType'>外卖</view>
-    </view>
-  </view>
 
-  <!--选择桌号  -->
-  <view class='tangshiType'>
-    <view class="title-comm">选择桌号</view>
-    <view class='inputType'>
-      <input placeholder='输入您的桌号' class='inputStyle'></input>
+        <!--选择桌号  -->
+        <view class='tangshiType' wx:if="{{type === '0' ? true : false}}">
+            <view class="title-comm">选择桌号</view>
+            <view class='inputType'>
+                <input placeholder='输入您的桌号' class='inputStyle'></input>
+            </view>
+        </view>
+
+        <!--选择地址  -->
+        <view class='waimaiType' wx:if="{{type === '2' ? true : false}}" bindtap='goToAddress'>
+            <view class="title-comm flex-item">
+                <view>选择地址</view>
+                <view>
+                    <image src='../../img/icon-arrowdown.png' class='arrow-icon'></image>
+                </view>
+            </view>
+            <view class='addressType'>
+                <view class='address-item'>详细地址：{{address.address}}</view>
+                <view class='address-item'>联系人：{{address.name}}</view>
+                <view class='address-item'>联系电话：{{address.phone}}</view>
+            </view>
+        </view>
+
+        <!--备注  -->
+        <view class='requirement'>
+            <view class='title-comm'>点餐要求</view>
+            <textarea class='text' placeholder="附加要求..." placeholder-class="placeholder" auto-focus="true" value="{{textarea}}"></textarea>
+        </view>
+
+    </scroll-view>
+
+    <view class="total">
+        <text class="totalPrice">总价：{{total}}</text>
+        <text class="payment" bindtap='createOrder'>去付款</text>
     </view>
-  </view>
-
-  <!--选择地址  -->
-  <view class='waimaiType'>
-    <view class="title-comm flex-item">
-      <view>选择地址</view>
-      <view>
-        <image src='../../img/icon-arrowdown.png' class='arrow-icon'></image>
-      </view>
-    </view>
-    <view class='addressType'>
-      <view class='address-item'>详细地址：{{address.address}}</view>
-      <view class='address-item'>联系人：{{address.name}}</view>
-      <view class='address-item'>联系电话：{{address.phone}}</view>
-    </view>
-  </view>
-
-  <!--备注  -->
-  <view class='requirement'>
-    <view class='title-comm'>点餐要求</view>
-    <textarea class='text' placeholder="附加要求..." placeholder-class="placeholder" auto-focus="true" value="{{textarea}}"></textarea>
-    <view class='spicy'>
-      <button class="spicyBtn" bindtap='addToTextarea' data-spicy='多辣'>多辣</button>
-      <button class="spicyBtn" bindtap='addToTextarea' data-spicy='一般'>一般</button>
-      <button class="spicyBtn" bindtap='addToTextarea' data-spicy='少辣'>少辣</button>
-      <button class="spicyBtn" bindtap='addToTextarea' data-spicy='不辣'>不辣</button>
-    </view>
-  </view>
-
-  <view class="fa fa-flag"></view>
-
-  <view class="total">
-    <text class="totalPrice">总价：{{orderList.total}}</text>
-    <text class="payment" bindtap='createOrder'>去付款</text>
-  </view>
-
 
 </view>

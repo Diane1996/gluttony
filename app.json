@@ -10,7 +10,8 @@
         "pages/orderShipping/orderShipping",
         "pages/cart/cart",
         "pages/logs/logs",
-        "pages/restaurant/restaurant"
+        "pages/restaurant/restaurant",
+        "pages/orderDetail/orderDetail"
     ],
     "window": {
         "backgroundTextStyle": "light",

@@ -23,7 +23,20 @@ Page({
     }
   },
 
+  goToAddress: function () {
+      wx.navigateTo({
+          url: '/pages/address/address?getAddress=true',
+      })
+  },
+
   createOrder: function () {
+    if (this.data.type === -1) {
+        wx.showModal({
+            title: '提示',
+            content: '您还没选择就餐方式呢。',
+        })
+        return;
+    }
     var getData = {
       open_id: 123456,
       shipping_fee: 123,
@@ -35,13 +48,22 @@ Page({
       remark: this.data.textarea
     }
     console.log(this.data.orderList.food_data, typeof this.data.orderList.food_data);
-    wx.request({
-      url: api.orderCreate,
-      data: getData,
-      success: function (res) {
-        console.log(res);
-      }
+    // wx.request({
+    //   url: api.orderCreate,
+    //   data: getData,
+    //   success: function (res) {
+    //     console.log(res);
+    //   }
+    // })
+
+    wx.setStorage({
+        key: 'cartList',
+        data: ''
     })
+
+    wx.redirectTo({
+        url: '/pages/orderDetail/orderDetail',
+    });
   },
 
   addToTextarea: function (e) {
@@ -66,7 +88,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.getStorage({
+        key: 'cartList',
+        success: (res) => {
+            var data = res.data;
+            var total = data.total;
+            var cartList = data.cartList;
+            this.setData({
+                cartList: cartList,
+                total: total
+            });
+        },
+    })
   },
 
   /**
@@ -91,7 +124,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+      wx.getStorage({
+          key: 'address',
+          success: (res) => {
+              this.setData({
+                  address: res.data
+              });
+          },
+      })
+
   },
 
   /**

@@ -4,19 +4,19 @@
     <view class='flex-center'><text class='username'>{{username}}</text></view>
     <!-- <text class="about" bindtap='gotoRestaurant'>关于我们</text> -->
   </view>
-  <view class='listItem' bindtap='gotoRestaurant'>
+  <view class='listItem' bindtap='gotoAddress'>
     <image src='../../img/iconfont-shouhuodizhi.png' class='icon'></image>
     <text>地址管理</text>  
   </view>
-  <view class='listItem'>
+  <!-- <view class='listItem' bindtap='gotoQuestion'>
     <image src='../../img/iconfont-dingdan.png' class='icon'></image>
     <text>订单管理</text>  
-  </view>
-  <view class='listItem'>
+  </view> -->
+  <view class='listItem' bindtap='gotoQuestion'>
     <image src='../../img/iconfont-help.png' class='icon'></image>
     <text>常见问题</text>  
   </view>
-  <view class='listItem'>
+  <view class='listItem' bindtap='gotoRestaurant'>
     <image src='../../img/iconfont-help.png' class='icon'></image>
     <text>关于我们</text>  
   </view>

@@ -1,2 +1,15 @@
 <!--pages/address/address.wxml-->
-<text>pages/address/address.wxml</text>
+<view class='page'>
+    <view class='item flex-item {{selectedItem === index ? "selectedItem" : ""}}' wx:for="{{addressList}}" wx:key="*this" bindtap='selectedItem' data-index="{{index}}" data-item="{{item}}">
+        <view class='address-item'>
+            <view class='flex-item text-comm'>
+                <view>收货人：{{item.name}}</view>
+                <view>{{item.phone}}</view>
+            </view>
+            <view class='address-comm'>收货地址：{{item.address}}</view>
+        </view>
+        <view class='selected' wx:if="{{selectedItem === index}}">
+            <image src='../../img/icon-arrowdown.png' class='arrow-icon'></image>
+        </view>
+    </view>
+</view>

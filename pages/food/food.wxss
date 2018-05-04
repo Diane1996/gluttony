@@ -119,9 +119,12 @@
 .cart-main {
   height: 100rpx;
   line-height: 100rpx;
-  display: flex;
-}
+  text-align:center;
 
+}
+.count-item{
+    margin: 0 40rpx;
+}
 .prise-text {
   width: 70%;
 }
