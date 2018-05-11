@@ -24,5 +24,13 @@ module.exports = {
   categoryFindAll: NewApiRootUrl + 'category/index',
 
   // 获取食物
-  foodFindAll: NewApiRootUrl + 'food/index'
+  foodFindAll: NewApiRootUrl + 'food/index',
+
+  // 地址
+  getAllAddress: NewApiRootUrl + 'orderShipping/findAll',
+  deleteAddress: NewApiRootUrl + 'orderShipping/deleteAddress',
+  updateAddress: NewApiRootUrl + 'orderShipping/updateAddress',
+  setDefaultData: NewApiRootUrl + 'orderShipping/setDefaultData',
+
+
 };

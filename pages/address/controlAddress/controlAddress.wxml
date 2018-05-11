@@ -1,0 +1,20 @@
+<!--pages/address/controlAddress/controlAddress.wxml-->
+
+<view class='page'>
+    <view>
+        <view class='flex-item'>
+            <view>联系人</view>
+            <view><input class='input-item' name="name" bindinput=""></input></view>
+        </view>
+        <view class='flex-item'>
+            <view>电话</view>
+        </view>
+        <view class='flex-item'>
+            <view>位置</view>
+        </view>
+        <view class='flex-item'>
+            <view>详细地址</view>
+        </view>
+    </view>
+    <view>确定</view>
+</view>

@@ -8,8 +8,24 @@
             </view>
             <view class='address-comm'>收货地址：{{item.address}}</view>
         </view>
-        <view class='selected' wx:if="{{selectedItem === index}}">
+        <!-- <view class='selected' wx:if="{{selectedItem === index}}">
             <image src='../../img/icon-arrowdown.png' class='arrow-icon'></image>
+        </view> -->
+        <!--三个圆点  -->
+        <view class='dept-more' data-folder-item='{{item}}' catchtap='setModalStatus'>
+            <image class='plug_icon' src='/img/depart-plug.png'></image>
         </view>
     </view>
+
+    <!--三个原点唤起的弹出层  -->
+    <view class="drawer_screen" bindtap="cancelModalStatus" wx:if="{{showModalStatus}}"></view>
+    <view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+        <view class='margin-bottom'>
+            <view bindtap="updateItem" class='cancel_view draw_view_content_comm'> 修改</view>
+            <view bindtap="deleteItem" class='cancel_view draw_view_content_comm'> 删除</view>
+        </view>
+        <view bindtap="cancelModalStatus" class='cancel_view draw_view_content_comm'> 取消</view>
+    </view>
+
+    <view class='add-btn' bindtap='addAddress'>添加新地址</view>
 </view>

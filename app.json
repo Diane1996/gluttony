@@ -4,6 +4,7 @@
         "pages/me/me",
         "pages/food/food",
         "pages/address/address",
+        "pages/address/controlAddress/controlAddress",
         "pages/orderList/orderList",
         "pages/question/question",
         "pages/order/order",
