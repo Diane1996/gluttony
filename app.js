@@ -9,32 +9,32 @@ App({
     wx.setStorageSync('logs', logs)
 
     // 登录
-    // wx.login({
-    //   success: res => {
-    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //     if (res.code) {
-    //       console.log('request', res.code);
-    //       wx.request({
-    //         url: api.login,
-    //         data: { code: res.code },
-    //         success: res=> {
-    //           console.log(res.data.data.result);
-    //           this.globalData.open_id = res.data.data.result.openid;
-    //           this.globalData.session_key = res.data.data.result.session_key;
-    //         },
-    //         fail: function (res) {
-    //           console.log('请求失败', res);
-    //         }
-    //       })
-    //     } else {
-    //       console.log('获取用户登录态失败：', res.errMsg);
-    //     }
-    //   },
-    //   fail: function () {
-    //     console.log('获取数据失败');
-    //   }
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        if (res.code) {
+          console.log('request', res.code);
+          wx.request({
+            url: api.login,
+            data: { code: res.code },
+            success: res=> {
+              console.log(res.data.data.result);
+              this.globalData.open_id = res.data.data.result.openid;
+              this.globalData.session_key = res.data.data.result.session_key;
+            },
+            fail: function (res) {
+              console.log('请求失败', res);
+            }
+          })
+        } else {
+          console.log('获取用户登录态失败：', res.errMsg);
+        }
+      },
+      fail: function () {
+        console.log('获取数据失败');
+      }
       
-    // }),
+    }),
 
     // 获取用户信息
     wx.getSetting({
@@ -60,6 +60,7 @@ App({
   globalData: {
     userInfo: null,
     session_key: null,
-    open_id: null
+    // open_id: null
+    open_id: 'ouRz30Egtyd9mifQmowivbtjzj9k'
   }
 })

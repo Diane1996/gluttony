@@ -14,8 +14,8 @@
 }
 
 .address-item {
-    width: 80%;
-    padding-left: 40rpx;
+    /* width: 80%; */
+     padding-left: 25rpx; 
 }
 
 .text-comm {
@@ -31,12 +31,13 @@
 .arrow-icon {
     width: 40rpx;
     height: 40rpx;
-    margin-right: 25rpx;
+    /* padding: 0 10rpx; */
 }
 
 .selected {
-    width: 20%;
-    text-align: center;
+    /* width: 20%; */
+    /* text-align: center; */
+    padding-left: 25rpx
 }
 
 /*选中状态  */
@@ -148,20 +149,6 @@ input-holder {
     color: #ea5036;
 }
 
-/*新建按钮  */
-
-.add-btn {
-    width: 690rpx;
-    height: 88rpx;
-    line-height: 88rpx;
-    color: #fff;
-    background: #ea5036;
-    position: absolute;
-    bottom: 40rpx;
-    left: 30rpx;
-    text-align: center;
-    border-radius: 10rpx;
-}
 
 /*三个原点  */
 
@@ -189,7 +176,6 @@ input-holder {
     background: #000;
     opacity: 0.2;
     overflow: hidden;
-    z-index: 1000;
     color: #fff;
 }
 
@@ -199,8 +185,8 @@ input-holder {
     position: fixed;
     bottom: 0;
     left: 0;
-    z-index: 2000;
     background: #f4f4f4;
+    transition: all 0.5s;
 }
 
 .cancel_view {

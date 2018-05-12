@@ -1,25 +1,30 @@
 <!--pages/address/address.wxml-->
 <view class='page'>
-    <view class='item flex-item {{selectedItem === index ? "selectedItem" : ""}}' wx:for="{{addressList}}" wx:key="*this" bindtap='selectedItem' data-index="{{index}}" data-item="{{item}}">
-        <view class='address-item'>
-            <view class='flex-item text-comm'>
-                <view>收货人：{{item.name}}</view>
-                <view>{{item.phone}}</view>
+    <view class='item flex-item' wx:for="{{addressList}}" wx:key="*this" bindtap='selectedItem' data-index="{{index}}" data-item="{{item}}">
+        <view class='flex-item'>
+            <view class='selected' wx:if="{{selectedItem === index}}">
+                <image src='../../img/selected.png' class='arrow-icon'></image>
             </view>
-            <view class='address-comm'>收货地址：{{item.address}}</view>
+            <view class='address-item'>
+                <view class='flex-item text-comm'>
+
+                    <view>收货人：{{item.name}}</view>
+                    <view>{{item.phone}}</view>
+                </view>
+                <view class='address-comm'>收货地址：{{item.address}}</view>
+            </view>
         </view>
-        <!-- <view class='selected' wx:if="{{selectedItem === index}}">
-            <image src='../../img/icon-arrowdown.png' class='arrow-icon'></image>
-        </view> -->
+
         <!--三个圆点  -->
-        <view class='dept-more' data-folder-item='{{item}}' catchtap='setModalStatus'>
+        <view class='dept-more' data-item='{{item}}' catchtap='setModalStatus'>
             <image class='plug_icon' src='/img/depart-plug.png'></image>
         </view>
     </view>
+    <view class='confirm-btn' bindtap='addAddress'>添加新地址</view>
 
     <!--三个原点唤起的弹出层  -->
     <view class="drawer_screen" bindtap="cancelModalStatus" wx:if="{{showModalStatus}}"></view>
-    <view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+    <view class="drawer_attr_box" wx:if="{{showModalStatus}}">
         <view class='margin-bottom'>
             <view bindtap="updateItem" class='cancel_view draw_view_content_comm'> 修改</view>
             <view bindtap="deleteItem" class='cancel_view draw_view_content_comm'> 删除</view>
@@ -27,5 +32,4 @@
         <view bindtap="cancelModalStatus" class='cancel_view draw_view_content_comm'> 取消</view>
     </view>
 
-    <view class='add-btn' bindtap='addAddress'>添加新地址</view>
 </view>

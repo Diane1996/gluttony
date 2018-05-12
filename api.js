@@ -13,10 +13,10 @@ module.exports = {
   orderPayment: NewApiRootUrl + 'order/payment',
   orderCancel: NewApiRootUrl + 'order/cancel',
 
-  orderShippingAdd: NewApiRootUrl + 'orderShipping/add',
-  orderShippingUpdate: NewApiRootUrl + 'orderShipping/update',
-  orderShippingDelete: NewApiRootUrl + 'orderShipping/delete',
-  orderShippingFindAll: NewApiRootUrl + 'orderShipping/findAll',
+//   orderShippingAdd: NewApiRootUrl + 'orderShipping/add',
+//   orderShippingUpdate: NewApiRootUrl + 'orderShipping/update',
+//   orderShippingDelete: NewApiRootUrl + 'orderShipping/delete',
+//   orderShippingFindAll: NewApiRootUrl + 'orderShipping/findAll',
 
   restaurant: NewApiRootUrl + 'restaurant/index',
 
@@ -29,8 +29,10 @@ module.exports = {
   // 地址
   getAllAddress: NewApiRootUrl + 'orderShipping/findAll',
   deleteAddress: NewApiRootUrl + 'orderShipping/deleteAddress',
-  updateAddress: NewApiRootUrl + 'orderShipping/updateAddress',
-  setDefaultData: NewApiRootUrl + 'orderShipping/setDefaultData',
+  updateAddress: NewApiRootUrl + 'orderShipping/update',
+  addAddress: NewApiRootUrl + 'orderShipping/add',
 
 
+    // 订单获取
+  getAllOrderList: NewApiRootUrl + 'order/findAll',
 };

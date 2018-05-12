@@ -9,13 +9,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        showPopup: false,   // 弹出层状态
-        showInputModal: false,  // 输入框弹出层
-        // showErrorModal: false,  // 错误弹出层
-        folderName: '',
         offset: 0,  // 初始获取数据位置
-        folderList: [],
-
+        showModalStatus: false,
         selectedItem: 0,
         addressList: []
     },
@@ -31,9 +26,6 @@ Page({
             success: (res) => {
                 if (res.confirm) {
                     if (getAddress) {
-                        this.setData({
-                            selectedItem: index
-                        });
                         wx.setStorage({
                             key: 'address',
                             data: item,
@@ -44,14 +36,19 @@ Page({
                             }
                         });
                     } else {
-                        var defaultData = {
-                            orderShipping_id: item.orderShipping_id,
-                        }
-                        Address.setDefaultAddress(defaultData, (res) => {
-                            var open_id = 123456;
-                            var page = this;
-                            getAllAddress(open_id, page);
-                        });
+                        wx.setStorage({
+                            key: 'defaultAddress',
+                            data: item,
+                            success: () => {
+                                wx.showToast({
+                                    title: '设置成功',
+                                    duration: 500
+                                });
+                                this.setData({
+                                    selectedItem: index
+                                });
+                            }
+                        })
                     }
                 }
             }
@@ -99,9 +96,14 @@ Page({
     },
 
     addAddress: function () {
-        wx.navigateTo({
-            url: '/pages/address/controlAddress/controlAddress',
-        });
+        wx.removeStorage({
+            key: 'updateAddress',
+            success: function(res) {
+                wx.navigateTo({
+                    url: '/pages/address/controlAddress/controlAddress',
+                });
+            },
+        })
     },
 
     updateItem: function () {
@@ -120,18 +122,22 @@ Page({
 
     deleteItem: function (e) {
         var item = this.data.item;
-        var open_id = 123456;
 
         this.setData({
             showModalStatus: false
         });
+
+        var deleteData = {
+            open_id: getApp().globalData.open_id,
+            receiver_id: item.receiver_id
+        }
 
         wx.showModal({
             title: '提示',
             content: '确定删除这个信息吗？',
             success: (res) => {
                 if (res.confirm) {
-                    Address.deleteItem(open_id, (res) => {
+                    Address.deleteAddress(deleteData, (res) => {
                         wx.showToast({
                             title: '删除成功',
                         });
@@ -147,7 +153,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        var open_id = 123456;
+        var open_id = getApp().globalData.open_id;
         var page = this;
         getAllAddress(open_id, page);
     },

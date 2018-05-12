@@ -14,23 +14,19 @@ function getAllAddress(open_id, callback) {
 function addAddress(data, callback) {
     var url = api.addAddress;
     var header = {};
-    Httpclient.get(url, data, header, callback);
+    Httpclient.post(url, data, header, callback);
 }
 
-function deleteAddress(open_id, addressId, callback) {
+function deleteAddress(data, callback) {
     var url = api.deleteAddress;
     var header = {};
-    var data = {
-        open_id: open_id,
-        orderShipping_id: addressId
-    }
-    Httpclient.remove(url, data, header, callback);
+    Httpclient.post(url, data, header, callback);
 }
 
 function updateAddress(data, callback) {
-    var url = api.deleteAddress;
+    var url = api.updateAddress;
     var header = {};
-    Httpclient.remove(url, data, header, callback);
+    Httpclient.post(url, data, header, callback);
 }
 
 function setDefaultAddress(data, callback) {

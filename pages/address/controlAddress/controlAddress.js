@@ -21,7 +21,10 @@ Page({
             key: 'updateAddress',
             success: (res) => {
                 this.setData({
-                    updateAddress: res.updateAddress
+                    updateAddress: res.data,
+                    name: res.data.name,
+                    phone: res.data.phone,
+                    address: res.data.address
                 });
             },
         })
@@ -49,28 +52,33 @@ Page({
         }
     },
 
+    inputChange: function (e) {
+        var value = e.detail.value;
+        var name = e.currentTarget.dataset.name;
+        this.setData({
+            [name]: value
+        });
+    },
+
     // 设置
     setAddressItem: function (e) {
         var updateAddress = this.data.updateAddress;
+        var name = this.data.name;
+        var phone = this.data.phone;
+        var address = this.data.address;
         var data = {
-            name: this.data.name,
-            phone: this.data.phone,
-            address: this.data.address,
-            open_id: open_id,
+            name: name,
+            phone: phone,
+            address: address,
+            open_id: getApp().globalData.open_id,
         }
         if (updateAddress) {
-            data = {
-                name: this.data.name,
-                phone: this.data.phone,
-                address: this.data.address,
-                open_id: open_id,
-                orderShipping_id: updateAddress.orderShipping_id
-            }
+            data.receiver_id = updateAddress.receiver_id
         }
 
         if (name == null || name == '' || phone == null || phone == '' || address == null || address == '') {
             wx.showToast({
-                title: '不能为空的哟',
+                title: '信息不能为空',
                 icon: 'none'
             });
             return;
@@ -97,11 +105,14 @@ Page({
         if (updateAddress) {
             Address.updateAddress(data, (res) => {
                 var result = res;
+                // 清除缓存的订单信息
                 wx.removeStorage({
                     key: 'updateAddress',
                     success: (res) => {
                         var content = '修改成功';
                         showMyToast(content);
+                        var page = this;
+                        clearInput(page);
                     },
                 })
             });
@@ -110,16 +121,11 @@ Page({
                 var result = res;
                 var content = '添加成功';
                 showMyToast(content);
+                var page = this;
+                clearInput(page);
             });
         }
 
-        this.setData({
-            showPopup: false,   // 弹出层状态
-            showInputModal: false,
-            name: '',
-            phone: '',
-            address: '',
-        })
     },
 
 
@@ -149,4 +155,15 @@ function showMyToast(content) {
             })
         }
     })
+}
+
+function clearInput(page) {
+    page.setData({
+        showPopup: false,   // 弹出层状态
+        showInputModal: false,
+        name: '',
+        phone: '',
+        address: '',
+    });
+
 }
