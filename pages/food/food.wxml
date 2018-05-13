@@ -8,7 +8,7 @@
     </scroll-view>
     <scroll-view class='food-view' scroll-y>
         <view class='food_item' wx:for="{{menu[selectedItem].list}}" wx:key="*this">
-            <view class='food_item'>
+            <view class='flex-item'>
                 <view>
                     <!-- <image src='http://img1.3lian.com/2015/w7/85/d/101.jpg' class='picture'></image> -->
                     <image src='{{item.url}}' class='picture'></image>

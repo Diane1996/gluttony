@@ -151,3 +151,38 @@ button {
   padding: 20rpx 40rpx;
   color: #333;
 }
+
+
+/*购物车  */
+
+.cart {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fe4119;
+  color: #fff;
+  text-align: center;
+}
+
+.cart-main {
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align:center;
+
+}
+.count-item{
+    margin: 0 40rpx;
+}
+.prise-text {
+  width: 70%;
+}
+
+.goToOrder {
+  width: 35%;
+  border-left: #fff solid 2px;
+}
+
+.hide {
+  display: none;
+}

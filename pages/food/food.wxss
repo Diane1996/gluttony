@@ -8,8 +8,9 @@
 }
 
 .category-view {
-  width: 30%;
-  background: #fff;
+  width: 25%;
+  background: #f6f6f6;
+  font-size: 32rpx
 }
 
 .category-item {
@@ -20,11 +21,11 @@
 }
 
 .selected-category-item {
-  border-right: 6rpx solid #d81d6f;
+  border-right: 6rpx solid #fe4119;
 }
 
 .food-view {
-  width: 70%;
+  /* width: 70%; */
   background: #fff;
   height: 1050rpx;
 }
@@ -51,7 +52,7 @@
   padding: 0;
   border: 1px solid #ccc;
   background-color: #fff;
-  color: #d81d6f;
+  color: #fe4119;
   font-weight: bold;
 }
 
@@ -68,6 +69,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 15rpx;
 }
 
 .name {
@@ -80,7 +82,7 @@
 
 .price {
   font-size: 26rpx;
-  color: #666;
+  color: #fe4119;
   margin-top: 20rpx;
 }
 
@@ -91,9 +93,9 @@
 }
 
 .picture {
-  width: 80px;
-  height: 80px;
-  margin-right: 20rpx;
+  width: 140rpx;
+  height: 140rpx;
+  padding-right: 20rpx;
 }
 
 /*隐藏侧边滚动条  */

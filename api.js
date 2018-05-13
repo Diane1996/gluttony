@@ -25,6 +25,7 @@ module.exports = {
 
   // 获取食物
   foodFindAll: NewApiRootUrl + 'food/index',
+  getFoodListByOrderId: NewApiRootUrl + 'food/getFoodListByOrderId',
 
   // 地址
   getAllAddress: NewApiRootUrl + 'orderShipping/findAll',
@@ -35,4 +36,5 @@ module.exports = {
 
     // 订单获取
   getAllOrderList: NewApiRootUrl + 'order/findAll',
+  getOrderDetail: NewApiRootUrl + 'order/getOneDetail',
 };
