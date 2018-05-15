@@ -4,7 +4,7 @@
         <view class='orderList'>
             <view class='title-comm'>餐品</view>
             <view class='foodList'>
-                <view wx:for="{{cartList}}" wx:key="*this" class='listItem flex-item'>
+                <view wx:for="{{foodList}}" wx:key="*this" class='listItem flex-item'>
                     <view class='flex-item'>
                         <view>
                             <image src='{{item.url}}' class='image-comm'></image>
@@ -24,14 +24,14 @@
         <view class='eatingType'>
             <view class="title-comm">就餐方式</view>
             <view class="eatingContent flex-item">
-                <view class="type-comm tangshi {{type === '0' ? 'curBtn' : ''}}" data-num="0" bindtap='changeType'>堂食</view>
-                <view class="type-comm waidai {{type === '1' ? 'curBtn' : ''}}" data-num="1" bindtap='changeType'>外带</view>
-                <view class="type-comm waimai {{type === '2' ? 'curBtn' : ''}}" data-num="2" bindtap='changeType'>外卖</view>
+                <view class="type-comm tangshi {{eatingType === '堂食' ? 'curBtn' : ''}}" data-type="堂食" bindtap='changeType'>堂食</view>
+                <view class="type-comm waidai {{eatingType === '外带' ? 'curBtn' : ''}}" data-type="外带" bindtap='changeType'>外带</view>
+                <view class="type-comm waimai {{eatingType === '外卖' ? 'curBtn' : ''}}" data-type="外卖" bindtap='changeType'>外卖</view>
             </view>
         </view>
 
         <!--选择桌号  -->
-        <view class='tangshiType' wx:if="{{type === '0' ? true : false}}">
+        <view class='tangshiType' wx:if="{{eatingType === '堂食' ? true : false}}">
             <view class="title-comm">选择桌号</view>
             <view class='inputType'>
                 <input placeholder='输入您的桌号' class='inputStyle'></input>
@@ -39,7 +39,7 @@
         </view>
 
         <!--选择地址  -->
-        <view class='waimaiType' wx:if="{{type === '2' ? true : false}}" bindtap='goToAddress'>
+        <view class='waimaiType' wx:if="{{eatingType === '外卖' ? true : false}}" bindtap='goToAddress'>
             <view class="title-comm flex-item">
                 <view>选择地址</view>
                 <view>

@@ -27,6 +27,20 @@ Page({
     })
   },
 
+  mackPhoneCall: function () {
+      wx.showModal({
+          title: '提示',
+          content: '确定拨打电话吗',
+          success: (res) => {
+            if (res.confirm) {
+                wx.makePhoneCall({
+                    phoneNumber: '13912341234',
+                });
+            }
+          }
+      })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

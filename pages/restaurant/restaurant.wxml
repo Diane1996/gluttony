@@ -1,7 +1,7 @@
 <view class='page'>
   <view class='infoItem' style='height: {{windowHeight}}px'>
     <view class='name-text'>{{infoData.name}}</view>
-    <view class='phone-text'>
+    <view class='phone-text' bindtap='mackPhoneCall'>
       <text>{{infoData.phone}}</text>
     </view>
     <view class='phone-text'>
