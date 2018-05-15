@@ -8,6 +8,7 @@ module.exports = {
 
   // 需要调用微信接口
   login: NewApiRootUrl + 'login/index',
+  addUserInfo: NewApiRootUrl + 'login/addUserInfo',
 
   orderCreate: NewApiRootUrl + 'order/create',
   orderPayment: NewApiRootUrl + 'order/payment',
@@ -22,8 +23,11 @@ module.exports = {
 
   // 获取分类
   categoryFindAll: NewApiRootUrl + 'category/index',
+  addCategory: NewApiRootUrl + 'category/addCategory',
+  getCategory: NewApiRootUrl + 'category/getCategory',
 
   // 获取食物
+
   foodFindAll: NewApiRootUrl + 'food/index',
   getFoodListByOrderId: NewApiRootUrl + 'food/getFoodListByOrderId',
 

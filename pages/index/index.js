@@ -1,5 +1,3 @@
-
-
 const api = require('./../../api.js');
 
 //index.js
@@ -13,23 +11,24 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({ //页面跳转
       url: '../logs/logs'
     })
   },
-  gotoFood: function() {
+  gotoFood: function () {
     wx.navigateTo({
       url: '../food/food',
     })
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
+    if (app.globalData.avatarUrl) {
       this.setData({
-        userInfo: app.globalData.userInfo,
+        avatarUrl: app.globalData.avatarUrl,
+        nickName: app.globalData.nickName,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
@@ -51,7 +50,7 @@ Page({
       })
     }
   },
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
