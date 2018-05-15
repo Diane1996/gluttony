@@ -1,28 +1,18 @@
 // pages/address/address.js
+
+var Address = require('../module/address.js');
+
+var currItem = '';
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        offset: 0,  // 初始获取数据位置
+        showModalStatus: false,
         selectedItem: 0,
-        addressList: [{
-            name: '张三',
-            phone: '13912341234',
-            address: '成都天府大道1314号'
-        }, {
-            name: '李四',
-            phone: '13912341234',
-            address: '成都天府大道1314号'
-        }, {
-            name: '王二',
-            phone: '13912341234',
-            address: '成都天府大道1314号'
-        }, {
-            name: '小明',
-            phone: '13912341234',
-            address: '成都天府大道1314号'
-        },]
+        addressList: []
     },
 
     selectedItem: function (e) {
@@ -36,79 +26,146 @@ Page({
             success: (res) => {
                 if (res.confirm) {
                     if (getAddress) {
-                        this.setData({
-                            selectedItem: index
-                        });
                         wx.setStorage({
                             key: 'address',
                             data: item,
+                            success: () => {
+                                wx.navigateBack({
+                                    delta: 1,
+                                });
+                            }
                         });
-                        wx.navigateBack({
-                            delta: 1,
-                        })
                     } else {
-                        // 不是结算页面跳转过来的就将选中的数据存入数据库
+                        wx.setStorage({
+                            key: 'defaultAddress',
+                            data: item,
+                            success: () => {
+                                wx.showToast({
+                                    title: '设置成功',
+                                    duration: 500
+                                });
+                                this.setData({
+                                    selectedItem: index
+                                });
+                            }
+                        })
                     }
-
                 }
             }
         })
     },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
+
+    getMoreList: function () {
+        var page = this;
+        var ownerId = this.data.ownerId;
+        getFolderList(page, ownerId);
+    },
+
+    // 唤起弹出层
+    setModalStatus: function (e) {
+        var item = e.currentTarget.dataset.item;
+
         this.setData({
-            getAddress: options.getAddress
+            showModalStatus: true,
+            item: item,
+        });
+
+        // 弹出动画
+        var animation = wx.createAnimation({
+            duration: 200,
+            timingFunction: "linear",
+            delay: 0
+        });
+        this.animation = animation
+        animation.translateY(300).step()
+        this.setData({
+            animationData: animation.export()
+        });
+        setTimeout(function () {
+            animation.translateY(0).step()
+            this.setData({
+                animationData: animation
+            });
+        }.bind(this), 200);
+    },
+
+    cancelModalStatus: function () {
+        this.setData({
+            showModalStatus: false
+        });
+    },
+
+    addAddress: function () {
+        wx.removeStorage({
+            key: 'updateAddress',
+            success: function(res) {
+                wx.navigateTo({
+                    url: '/pages/address/controlAddress/controlAddress',
+                });
+            },
         })
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
+    updateItem: function () {
+        var item = this.data.item;
+        wx.setStorage({
+            key: "updateAddress",
+            data: item,
+        });
+        this.setData({
+            showModalStatus: false
+        });
+       wx.navigateTo({
+            url: '/pages/address/controlAddress/controlAddress',
+        });
+    },
 
+    deleteItem: function (e) {
+        var item = this.data.item;
+
+        this.setData({
+            showModalStatus: false
+        });
+
+        var deleteData = {
+            open_id: getApp().globalData.open_id,
+            receiver_id: item.receiver_id
+        }
+
+        wx.showModal({
+            title: '提示',
+            content: '确定删除这个信息吗？',
+            success: (res) => {
+                if (res.confirm) {
+                    Address.deleteAddress(deleteData, (res) => {
+                        wx.showToast({
+                            title: '删除成功',
+                        });
+                        var page = this;
+                        getAllAddress(open_id, page);
+                    });
+                }
+            }
+        });
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        var open_id = getApp().globalData.open_id;
+        var page = this;
+        getAllAddress(open_id, page);
     },
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
 })
+
+function getAllAddress(open_id, page) {
+    Address.getAllAddress(open_id, (res) => {
+        var dataList = res.data.result;
+        page.setData({
+            addressList: dataList
+        });
+    });
+
+}

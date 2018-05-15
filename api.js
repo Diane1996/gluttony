@@ -14,10 +14,10 @@ module.exports = {
   orderPayment: NewApiRootUrl + 'order/payment',
   orderCancel: NewApiRootUrl + 'order/cancel',
 
-  orderShippingAdd: NewApiRootUrl + 'orderShipping/add',
-  orderShippingUpdate: NewApiRootUrl + 'orderShipping/update',
-  orderShippingDelete: NewApiRootUrl + 'orderShipping/delete',
-  orderShippingFindAll: NewApiRootUrl + 'orderShipping/findAll',
+//   orderShippingAdd: NewApiRootUrl + 'orderShipping/add',
+//   orderShippingUpdate: NewApiRootUrl + 'orderShipping/update',
+//   orderShippingDelete: NewApiRootUrl + 'orderShipping/delete',
+//   orderShippingFindAll: NewApiRootUrl + 'orderShipping/findAll',
 
   restaurant: NewApiRootUrl + 'restaurant/index',
 
@@ -27,6 +27,18 @@ module.exports = {
   getCategory: NewApiRootUrl + 'category/getCategory',
 
   // 获取食物
-  foodFindAll: NewApiRootUrl + 'food/foodFindAll',
-  addFood: NewApiRootUrl + 'food/add',
+
+  foodFindAll: NewApiRootUrl + 'food/index',
+  getFoodListByOrderId: NewApiRootUrl + 'food/getFoodListByOrderId',
+
+  // 地址
+  getAllAddress: NewApiRootUrl + 'orderShipping/findAll',
+  deleteAddress: NewApiRootUrl + 'orderShipping/deleteAddress',
+  updateAddress: NewApiRootUrl + 'orderShipping/update',
+  addAddress: NewApiRootUrl + 'orderShipping/add',
+
+
+    // 订单获取
+  getAllOrderList: NewApiRootUrl + 'order/findAll',
+  getOrderDetail: NewApiRootUrl + 'order/getOneDetail',
 };
