@@ -11,7 +11,7 @@
             <view class='flex-item'>
                 <view>
                     <!-- <image src='http://img1.3lian.com/2015/w7/85/d/101.jpg' class='picture'></image> -->
-                    <image src='{{item.url}}' class='picture'></image>
+                    <image src='{{item.picture}}' class='picture'></image>
                 </view>
                 <view>
                     <view class='name'>{{item.name}}</view>
@@ -32,7 +32,7 @@
             <view wx:for="{{cartList}}" wx:key="*this" class='cart-item flex-item'>
                 <view class='flex-item'>
                     <view>
-                        <image src='{{item.url}}' class='picture-icon'></image>
+                        <image src='{{item.picture}}' class='picture-icon'></image>
                     </view>
                     <view>
                         <view class='name'>{{item.name}}</view>

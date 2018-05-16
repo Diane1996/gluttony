@@ -20,10 +20,17 @@ function getOrderDetail(order_id, callback) {
     };
     var header = {};
     Httpclient.get(url, data, header, callback);
+}
 
+// 增加订单
+function addOrder(data, callback) {
+    var url = api.addOrder;
+    var header = {};
+    Httpclient.get(url, data, header, callback);
 }
 
 module.exports = {
     getAllOrderList,
-    getOrderDetail
+    getOrderDetail,
+    addOrder
 }

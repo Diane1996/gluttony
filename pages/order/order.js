@@ -1,5 +1,6 @@
 
 const api = require('./../../api.js');
+const Order = require('../module/order.js');
 
 // pages/order/order.js
 Page({
@@ -9,12 +10,7 @@ Page({
      */
     data: {
         eatingType: -1,
-        orderList: [{
-            url: '../../img/eatingIMG/noodles/seaweedNoodles.png',
-            name: '海苔蔬菜乌冬面',
-            price: 18,
-            count: 1
-        }],
+        foodList: [],
         textarea: '',
         address: {
             name: '张三',
@@ -22,6 +18,8 @@ Page({
             address: '成都天府大道1314号'
         },
         total: 0,
+        desk_num: 1,
+        remark: '',
     },
 
     goToAddress: function () {
@@ -31,77 +29,83 @@ Page({
     },
 
     createOrder: function () {
-        // var total = this.data.total;
-        // var eatingType = this.data.eatingType;
-        // var foodList = this.data.orderList.food_data;
-        // var address = this.data.address;
-        // if (eatingType === -1) {
-        //     wx.showModal({
-        //         title: '提示',
-        //         content: '您还没选择就餐方式呢。',
-        //     })
-        //     return;
-        // }
-        // var orderData = {
-        //     open_id: getApp().globalData.open_id,
-        //     total_price: this.data.total,
-        //     type: this.data.eatingType,
-        //     desk_num: 1,
-        //     people_num: 1,
-        //     receiver_id: address ? address.receiver_id : null,
-        //     foodList: foodList,
-        //     remark: this.data.textarea,
-        //     first_name: foodList[0].name,
-        //     first_picture: foodList[0].picture,
-        // }
+        var total = this.data.total;
+        var eatingType = this.data.eatingType;
+        var foodList = this.data.foodList;
+        var address = this.data.address;
+        if (eatingType === -1) {
+            wx.showModal({
+                title: '提示',
+                content: '您还没选择就餐方式呢。',
+            })
+            return;
+        }
 
+        switch (eatingType) {
+            case -1:
+                if (this.data.desk_num) {
+                    wx.showModal({
+                        title: '提示',
+                        content: '您还没选择就餐方式呢。',
+                    });
+                    return;
+                }
+                break;
+            case '外带':
+                () => {
+                    wx.showModal({
+                        title: '提示',
+                        content: '您还没填桌号呢。',
+                    });
+                    return;
+                }
+                break;
+        }
 
+        var receiver_id = null;
+        if (eatingType === '外卖') {
+            receiver_id = address.receiver_id;
+        }
 
-        // var foodListData = [];
-        // for (var i = 0; i < foodList.length; i++) {
-        //     foodListData.push({
-        //         food_id: foodList[0].food_id,
-        //         order_id: order_id,
-        //         count: foodList[0].count
-        //     });
-        // }
+        var orderData = {
+            open_id: getApp().globalData.open_id,
+            total_price: this.data.total,
+            type: this.data.eatingType,
+            desk_num: this.data.desk_num,
+            people_num: this.data.people_num,
+            receiver_id: receiver_id,
+            foodList: foodList,
+            remark: this.data.textarea,
+            first_name: foodList[0].name,
+            first_picture: foodList[0].picture,
+        }
 
-        console.log(this.data.orderList.food_data, typeof this.data.orderList.food_data);
-        // wx.request({
-        //   url: api.orderCreate,
-        //   data: getData,
-        //   success: function (res) {
-        //     console.log(res);
-        //   }
-        // })
+        Order.addOrder(orderData, (res) => {
+            wx.setStorage({
+                key: 'cartList',
+                data: ''
+            });
+            wx.redirectTo({
+                url: '/pages/orderDetail/orderDetail?order_id=' + res.data.result,
+            });
+        });
 
-        // wx.setStorage({
-        //     key: 'cartList',
-        //     data: ''
-        // })
-        wx.requestPayment({
-            timeStamp: new Date().getTime(),
-            nonceStr: '123456',
-            package: '123456',
-            signType: 'MD5',
-            paySign: '456789',
-        })
-
-        // wx.redirectTo({
-        //     url: '/pages/orderDetail/orderDetail',
+        // 支付
+        // wx.requestPayment({
+        //     timeStamp: new Date().getTime(),
+        //     nonceStr: '123456',
+        //     package: '123456',
+        //     signType: 'MD5',
+        //     paySign: '456789',
         // });
     },
 
-    addToTextarea: function (e) {
-        const text = e.target.dataset.spicy;
-        console.log(text);
+    inputChange: function (e) {
+        var value = e.detail.value;
+        var name = e.currentTarget.dataset.name;
         this.setData({
-            remark: this.data.textarea + text
-        });
-    },
-
-    textareaChange: function (e) {
-
+            [name]: value,
+        })
     },
 
     changeType: function (e) {
@@ -146,25 +150,10 @@ Page({
                     total: total
                 });
             },
-        })
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-        var _this = this;
-        wx.request({
-            url: api.cartList,
-            data: { open_id: 123456 },
-            success: function (res) {
-                const result = res.data.data.result
-                console.log(result);
-                _this.setData({
-                    orderList: result
-                })
-            }
-        })
+        });
+        this.setData({
+            desk_num: getApp().globalData.desk_num
+        });
     },
 
     /**
@@ -179,41 +168,6 @@ Page({
                 });
             },
         })
-
     },
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
 })

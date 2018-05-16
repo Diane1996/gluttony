@@ -12,6 +12,22 @@ function getFoodListByOrderId(order_id, callback) {
     Httpclient.get(url, data, header, callback);
 }
 
+function getFoodList(callback) {
+    var url = api.foodFindAll;
+    var data = {};
+    var header = {};
+    return Httpclient.get(url, data, header, callback);
+}
+
+function getCategoryList(callback) {
+    var url = api.categoryFindAll;
+    var data = {};
+    var header = {};
+    return Httpclient.get(url, data, header, callback);
+}
+
 module.exports = {
     getFoodListByOrderId,
+    getFoodList,
+    getCategoryList
 }

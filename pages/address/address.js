@@ -52,7 +52,7 @@ Page({
                     }
                 }
             }
-        })
+        });
     },
 
     getMoreList: function () {
@@ -157,6 +157,13 @@ Page({
         var page = this;
         getAllAddress(open_id, page);
     },
+
+    onLoad: function (options) {
+        var getAddress = options.getAddress;
+        this.setData({
+            getAddress: getAddress
+        })
+    }
 
 })
 

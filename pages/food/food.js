@@ -1,6 +1,8 @@
 const api = require('./../../api.js');
 
 var menu = require('./../../img/eatingIMG/menu.js');
+var Food = require("../module/food.js");
+
 
 var cartList = [];  // 购物车列表
 // pages/food/food.js
@@ -11,7 +13,7 @@ Page({
      */
 
     data: {
-        isCartEmpty: true,
+        isCartEmpty: false,
         categoryData: '',
         selectedItem: 0,
         showCartList: false,
@@ -40,6 +42,7 @@ Page({
 
     addCart: function (e) {
         var item = e.currentTarget.dataset.item;
+        cartList = this.data.cartList;
         for (var i = 0; i < cartList.length; i++) {
             if (cartList[i].name === item.name)
                 return;
@@ -48,22 +51,39 @@ Page({
         cartList.push(item);
         var page = this;
         getTotal(page);
+        wx.setStorage({
+            key: 'cartList',
+            data: cartList,
+        });
         this.setData({
             cartList: cartList,
             isCartEmpty: false
         });
+
     },
 
     minusCount: function (e) {
         var index = e.currentTarget.dataset.index;
-        if (cartList[index].count === 1) return;
         cartList[index].count = cartList[index].count - 1;
+        if (cartList[index].count === 0) {
+            cartList.splice(index, 1);
+            if (cartList.length === 0) {
+                this.setData({
+                    isCartEmpty: true,
+                    showCartList: false
+                });
+            }
+        }
         this.setData({
             cartList: cartList
         });
+        wx.setStorage({
+            key: 'cartList',
+            data: cartList,
+        });
         var page = this;
         getTotal(page);
-     },
+    },
 
     addCount: function (e) {
         var index = e.currentTarget.dataset.index;
@@ -73,7 +93,7 @@ Page({
         });
         var page = this;
         getTotal(page);
-     },
+    },
 
     goToOrder: function (e) {
         var cartListData = {
@@ -94,9 +114,9 @@ Page({
      */
     onLoad: function (options) {
 
-        this.setData({
-            menu: menu.menu
-        })
+        // this.setData({
+        //     menu: menu.menu
+        // })
     },
 
     /**
@@ -129,51 +149,33 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        var page = this;
         wx.getStorage({
             key: 'cartList',
             success: (res) => {
+                var total = this.data.total;
+                cartList = [];
+                if (res.data.cartList == '' || res.data.cartList === undefined) {
+                    total = 0;
+                    cartList = [];
+                    this.setData({
+                        isCartEmpty: true,
+                    })
+                } else {
+                    cartList = res.data.cartList;
+                }
+
                 this.setData({
-                    // cartList: res.data.cartList
+                    cartList: cartList,
+                    total: total,
                 });
-                // cartList = res.data.cartList
+                getTotal(page);
             },
         })
+
+        getFoodList(page);
     },
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
 })
 
 function getTotal(page) {
@@ -184,4 +186,41 @@ function getTotal(page) {
     page.setData({
         total: total
     });
+}
+
+function getFoodList(page) {
+    var categoryData = new Promise((resolve, reject) => {
+        Food.getCategoryList((res) => {
+            var data = res;
+            resolve(res.data.result);
+        });
+    });
+
+    categoryData.then((categoryData) => {
+        return new Promise((resolve) => {
+            Food.getFoodList((res) => {
+                var ress = res.data.result;
+                var list = [];
+                for (let i = 0; i < categoryData.length; i++) {
+                    var listItem = {};
+                    listItem.name = categoryData[i].category_name;
+                    listItem.list = [];
+                    for (let j = 0; j < ress.length; j++) {
+                        var foodItem = ress[j];
+                        if (categoryData[i].category_id === ress[j].category_id) {
+                            listItem.list.push(foodItem);
+                        }
+                    }
+                    list.push(listItem)
+                }
+                resolve(list);
+            });
+        })
+    })
+        .then((menuList) => {
+            console.log(menuList);
+            page.setData({
+                menu: menuList
+            });
+        })
 }

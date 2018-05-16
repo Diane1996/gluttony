@@ -11,6 +11,15 @@ function getAllAddress(open_id, callback) {
     Httpclient.get(url, data, header, callback);
 }
 
+function getOrderAddress(receiver_id, callback) {
+    var url = api.getOrderAddress;
+    var data = {
+        receiver_id: receiver_id
+    };
+    var header = {};
+    Httpclient.get(url, data, header, callback);
+}
+
 function addAddress(data, callback) {
     var url = api.addAddress;
     var header = {};
@@ -40,5 +49,6 @@ module.exports = {
     addAddress,
     deleteAddress,
     updateAddress,
-    setDefaultAddress
+    setDefaultAddress,
+    getOrderAddress,
 }

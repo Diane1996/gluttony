@@ -7,7 +7,7 @@
                 <view wx:for="{{foodList}}" wx:key="*this" class='listItem flex-item'>
                     <view class='flex-item'>
                         <view>
-                            <image src='{{item.url}}' class='image-comm'></image>
+                            <image src='{{item.picture}}' class='image-comm'></image>
                         </view>
                         <view>
                             <view class='name-comm'>{{item.name}}</view>
@@ -34,7 +34,7 @@
         <view class='tangshiType' wx:if="{{eatingType === '堂食' ? true : false}}">
             <view class="title-comm">选择桌号</view>
             <view class='inputType'>
-                <input placeholder='输入您的桌号' class='inputStyle'></input>
+                <input placeholder='输入您的桌号' class='inputStyle' value='{{desk_num}}' bindinput='inputChange' data-name="desk_num"></input>
             </view>
         </view>
 
@@ -55,8 +55,8 @@
 
         <!--备注  -->
         <view class='requirement'>
-            <view class='title-comm'>点餐要求</view>
-            <textarea class='text' placeholder="附加要求..." placeholder-class="placeholder" auto-focus="true" value="{{textarea}}"></textarea>
+            <view class='title-comm'>备注</view>
+            <textarea class='text' placeholder="附加要求..." placeholder-class="placeholder" auto-focus="true" value="{{textarea}}" bindinput='inputChange' data-name="remark"></textarea>
         </view>
 
     </scroll-view>

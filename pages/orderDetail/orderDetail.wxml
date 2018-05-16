@@ -33,17 +33,17 @@
         <view class='eatingType flex-item'>
             <view class="title-comm">就餐方式</view>
             <!-- <view>{{type}}</view> -->
-            <view class='text-comm'>{{orderDetail.orderType}}</view>
+            <view class='text-comm'>{{orderDetail.eatingType}}</view>
         </view>
 
         <!--选择桌号  -->
-        <view class='tangshiType flex-item' wx:if="{{orderDetail.type === 0 ? true : false}}">
+        <view class='tangshiType flex-item' wx:if="{{orderDetail.eatingType === '堂食' ? true : false}}">
             <view class="title-comm">桌号</view>
-            <view class='text-comm'>10</view>
+            <view class='text-comm'>{{orderDetail.desk_num}}</view>
         </view>
 
         <!--选择地址  -->
-        <view class='waimaiType' wx:if="{{orderDetail.type === 2 ? true : false}}">
+        <view class='waimaiType' wx:if="{{orderDetail.eatingType === '外卖' ? true : false}}">
             <view class="title-comm flex-item">
                 <view>送餐地址</view>
             </view>
@@ -58,7 +58,7 @@
         <view class='requirement'>
             <view class='title-comm'>点餐要求</view>
             <view class='mark-text'>
-                {{orderDetail.mark}}
+                {{orderDetail.remark}}
             </view>
         </view>
     </scroll-view>
@@ -69,7 +69,7 @@
             购物车空空如也哟,快去选购吧...
         </view>
         <view class='cart-main flex-item' wx:if="{{!isCartEmpty}}">
-            <view class='prise-text' bindtap='toggleCartList'>详情￥{{total}}</view>
+            <view class='prise-text' bindtap='toggleCartList'>详情￥{{orderDetail.total_price}}</view>
             <view class='goToOrder' bindtap='goToOrder'>选好了</view>
         </view>
     </view>

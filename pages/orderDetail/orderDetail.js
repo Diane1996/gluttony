@@ -1,6 +1,7 @@
 // pages/orderDetail/orderDetail.js
 var Order = require('../module/order.js');
 var Food = require('../module/food.js');
+var Address = require('../module/address.js');
 
 Page({
 
@@ -14,7 +15,7 @@ Page({
             phone: '13912341234',
             address: '成都天府大道1314号'
         },
-        mark: '面里不要酱油'
+        remark: '面里不要酱油'
     },
 
     /**
@@ -22,11 +23,10 @@ Page({
      */
     onLoad: function (options) {
         var order_id = options.order_id;
-        order_id = "6bf473dd";
 
         var page = this;
         getOrderDetail(order_id, page); 
-        getFoodList(order_id, page);
+        // getFoodList(order_id, page);
 
         wx.getStorage({
             key: 'cartList',
@@ -39,17 +39,36 @@ Page({
                     total: total
                 });
             },
-        })
+        });
     },
 })
 
 function getOrderDetail(order_id, page) {
     // 获取订单信息
-    Order.getOrderDetail(order_id, (res) => {
-        var orderList = res.data.result;
-        page.setData({
-            orderDetail: orderList
-        })
+    var orderPromise = new Promise((resolve, reject) => {
+        Order.getOrderDetail(order_id, (res) => {
+            var orderList = res.data.result;
+            page.setData({
+                orderDetail: orderList
+            });
+            resolve(orderList);
+        });
+    });
+    orderPromise.then((data) => {
+        Food.getFoodListByOrderId(order_id, (res) => {
+            var orderList = res.data.result;
+            page.setData({
+                orderList: orderList
+            });
+        });
+        if (data.eatingType === '外卖') {
+            Address.getOrderAddress(data.receiver_id, (res) => {
+                var address = res.data.result;
+                page.setData({
+                    address: address[address.length - 1]
+                });
+            });
+        }
     });
 }
 
