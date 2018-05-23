@@ -52,7 +52,8 @@ Page({
                 }
                 break;
             case '外带':
-                () => {
+            case '堂食':
+                if (this.data.desk_num === -1) {
                     wx.showModal({
                         title: '提示',
                         content: '您还没填桌号呢。',
@@ -75,7 +76,7 @@ Page({
             people_num: this.data.people_num,
             receiver_id: receiver_id,
             foodList: foodList,
-            remark: this.data.textarea,
+            remark: this.data.remark,
             first_name: foodList[0].name,
             first_picture: foodList[0].picture,
         }

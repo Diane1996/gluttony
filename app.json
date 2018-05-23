@@ -12,7 +12,8 @@
         "pages/cart/cart",
         "pages/logs/logs",
         "pages/restaurant/restaurant",
-        "pages/orderDetail/orderDetail"
+        "pages/orderDetail/orderDetail",
+        "pages/accredit/accredit"
     ],
     "window": {
         "backgroundTextStyle": "light",

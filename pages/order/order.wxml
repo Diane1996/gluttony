@@ -38,6 +38,14 @@
             </view>
         </view>
 
+        <!--选择桌号  -->
+        <view class='tangshiType' wx:if="{{eatingType === '外带' ? true : false}}">
+            <view class="title-comm">选择桌号</view>
+            <view class='inputType'>
+                <input placeholder='输入您的桌号' class='inputStyle' value='{{desk_num}}' bindinput='inputChange' data-name="desk_num"></input>
+            </view>
+        </view>
+
         <!--选择地址  -->
         <view class='waimaiType' wx:if="{{eatingType === '外卖' ? true : false}}" bindtap='goToAddress'>
             <view class="title-comm flex-item">

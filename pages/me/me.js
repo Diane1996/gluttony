@@ -37,8 +37,8 @@ Page({
      */
     onReady: function (e) {
         this.setData({
-            username: app.globalData.userInfo.nickName,
-            headImg: app.globalData.userInfo.avatarUrl,
+            headImg: app.globalData.avatarUrl,
+            username: app.globalData.nickName,
         })
     },
 

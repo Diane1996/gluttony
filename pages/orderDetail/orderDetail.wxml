@@ -42,6 +42,12 @@
             <view class='text-comm'>{{orderDetail.desk_num}}</view>
         </view>
 
+        <!--选择桌号  -->
+        <view class='tangshiType flex-item' wx:if="{{orderDetail.eatingType === '外带' ? true : false}}">
+            <view class="title-comm">桌号</view>
+            <view class='text-comm'>{{orderDetail.desk_num}}</view>
+        </view>
+
         <!--选择地址  -->
         <view class='waimaiType' wx:if="{{orderDetail.eatingType === '外卖' ? true : false}}">
             <view class="title-comm flex-item">

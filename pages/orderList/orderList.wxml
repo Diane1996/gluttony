@@ -7,7 +7,7 @@
                 <image src='{{item.first_picture}}' class='image-icon'></image>
             </view>
             <view>
-                <view class='item-name'>{{item.orderType}}:{{item.first_name + '等'}}</view>
+                <view class='item-name'>{{item.eatingType}}:{{item.first_name + '等'}}</view>
                 <view class='text-comm'>下单时间：{{item.create_time}}</view>
                 <view class='text-comm'>实付款：{{item.total_price}}元</view>
             </view>
