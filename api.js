@@ -42,4 +42,7 @@ module.exports = {
     getAllOrderList: NewApiRootUrl + 'order/findAll',
     getOrderDetail: NewApiRootUrl + 'order/getOneDetail',
     addOrder: NewApiRootUrl + 'order/create',
+
+    // 餐馆信息获取
+    getRestaurant: NewApiRootUrl + 'restaurant/index',
 };

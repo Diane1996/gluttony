@@ -3,11 +3,11 @@ var Order = require('../module/order.js');
 var Food = require('../module/food.js');
 var Address = require('../module/address.js');
 
+let timer;
+let repeat;
+
 Page({
 
-    /**
-     * 页面的初始数据
-     */
     data: {
         type: 2,
         address: {
@@ -18,15 +18,17 @@ Page({
         remark: '面里不要酱油'
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (options) {
         var order_id = options.order_id;
 
         var page = this;
         getOrderDetail(order_id, page); 
-        // getFoodList(order_id, page);
+
+        // setTimeout(repeat = () => {
+        //     timer = setTimeout(repeat, 5000);
+        //     //   this.getOrderList();
+        //     getAllOrderList({ page: this });
+        // }, 5000);
 
         wx.getStorage({
             key: 'cartList',
@@ -41,6 +43,15 @@ Page({
             },
         });
     },
+
+    onUnload: function () {
+        clearTimeout(timer);
+    },
+
+    onHide: function () {
+        clearTimeout(timer);
+    }
+
 })
 
 function getOrderDetail(order_id, page) {

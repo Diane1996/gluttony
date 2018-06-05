@@ -11,7 +11,7 @@
       <view class='detail-title'>详细</view>
       <view class='detail-text'>
         <text>
-      {{infoData.detail}}
+      {{infoData.remark}}
       </text>
       </view>
     </view>

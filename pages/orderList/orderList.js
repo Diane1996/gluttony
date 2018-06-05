@@ -1,6 +1,9 @@
 // pages/orderList/orderList.js
-
 var Order = require('../module/order.js');
+
+let timer;
+let repeat;
+
 Page({
 
     /**
@@ -27,15 +30,52 @@ Page({
     },
 
     onShow: function () {
-        var open_id = getApp().globalData.open_id;
+        getAllOrderList({ page: this });
 
-        Order.getAllOrderList(open_id, (res) => {
-            var orderList = res.data.orderList;
-            this.setData({
-                orderList: orderList
-            })
-        });
+        // setTimeout(repeat = () => {
+        //     timer = setTimeout(repeat, 5000);
+        //     //   this.getOrderList();
+        //     getAllOrderList({ page: this });
+        // }, 5000);
     },
 
 
+    onUnload: function () {
+        clearTimeout(timer);
+    },
+
+    onHide: function () {
+        clearTimeout(timer);
+    }
+
 })
+
+function getAllOrderList({ page }) {
+    var open_id = getApp().globalData.open_id;
+    Order.getAllOrderList(open_id, (res) => {
+        var orderList = res.data.orderList;
+        for (let i = 0; i < orderList.length; i++) {
+            var item = orderList[i];
+            switch (item.status) {
+                case 0:
+                    item.statusText = '待付款';
+                    break;
+                case 1:
+                    item.statusText = '待接单';
+                    break;
+                case 2:
+                    item.statusText = '已接单';
+                    break;
+                case 3:
+                    item.statusText = '制作中';
+                    break;
+                case 4:
+                    item.statusText = '已完成';
+                    break;
+            }
+        }
+        page.setData({
+            orderList: orderList
+        });
+    });
+}

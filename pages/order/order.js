@@ -9,7 +9,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        eatingType: -1,
+        eatingType: 10,
         foodList: [],
         textarea: '',
         address: {
